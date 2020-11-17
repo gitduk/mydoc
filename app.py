@@ -18,8 +18,9 @@ def index():
     for doc_name in html_doc_list:
         with open(root + doc_name, "r") as f:
             lines = f.readlines()
-            doc = "".join(lines)
-            # result = re.search("<body>(.*)</body>", html, re.S).group(1)
+            text = "".join(lines)
+            drop = re.search("<style .*</style>", text, re.S).group()
+            doc = text.replace(drop, "")
 
         doc_list.append(doc_name.replace(".html", ""))
 
