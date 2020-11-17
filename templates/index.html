@@ -4,10 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="content-language" content="en-gb">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/doc-panda.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/doc-panda.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fonts.css') }}">
     <link rel="icon" type="image/x-icon" href="../static/icon/favicon.ico">
-    <link href="../static/css/fonts.css" rel="stylesheet">
     <!-- Begin Jekyll SEO tag v2.6.1 -->
     <title>Manual | GitHub CLI</title>
     <meta name="generator" content="Jekyll v3.9.0">
@@ -625,8 +625,10 @@
         </details-menu>
 
     </details>
-    {% block show_doc %}
-    {% endblock %}
+    <div class="main-content bg-gray-dark text-white markdown-body col-12 col-lg-10 pt-7 pb-12 px-3 px-md-6">
+        {% block show_doc %}
+        {% endblock %}
+    </div>
     <div class="footer mt-6 col-12 mb-lg-0 pb-lg-0 py-lg-0 pb-6 mb-6">
         <div class="container-xl px-3 px-md-4">
             <div class="d-flex flex-wrap py-5 mb-5">
@@ -760,12 +762,8 @@
             </div>
         </div>
     </div>
-
     <script src="../static/js/dist.js"></script>
-
 </div>
-
-
 </body>
 <div id="cVim-status-bar" style="top: 0px;"></div>
 <iframe src="chrome-extension://ihlenndgcmojhcghmfjfneahoeklbjjh/cmdline_frame.html" id="cVim-command-frame"></iframe>

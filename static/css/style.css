@@ -11974,7 +11974,7 @@ p.explain .minibutton {
 
 .markdown-body .highlight pre {
     margin-bottom: 0;
-    word-break: normal
+    word-break: normal;
 }
 
 .markdown-body .highlight pre, .markdown-body pre {
@@ -11983,7 +11983,7 @@ p.explain .minibutton {
     font-size: 85%;
     line-height: 1.45;
     background-color: #f6f8fa;
-    border-radius: 3px
+    border-radius: 6px;
 }
 
 .markdown-body pre code, .markdown-body pre tt {
