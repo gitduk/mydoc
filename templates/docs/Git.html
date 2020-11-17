@@ -201,4 +201,12 @@
             class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre>
     <p>&nbsp;</p></div>
 </body>
-</html>{% endblock %}
+</html>
+{% endblock %}
+
+{% block TOC %}
+{% for name, level in toc_dict.items() %}
+<a href='#{{ name }}'>{{ name }}</a>
+{% endfor %}
+
+{% endblock %}

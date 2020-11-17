@@ -22,11 +22,14 @@ def index():
             # result = re.search("<body>(.*)</body>", html, re.S).group(1)
 
         doc_list.append(doc_name.replace(".html", ""))
+
+        toc = "{% for name, level in toc_dict.items() %}\n<a href='#{{ name }}'>{{ name }}</a>\n{% endfor %}\n"
         with open("templates/docs/" + doc_name, "w") as f:
-            extend_dict = {
+            block_dict = {
                 "show_doc": doc,
+                "TOC": toc
             }
-            html = build_child_html(father='index.html', extend_dict=extend_dict)
+            html = build_child_html(extends='index.html', block_dict=block_dict)
             f.write(html)
 
     return render_template("index.html", **locals())
@@ -34,7 +37,17 @@ def index():
 
 @app.route('/documents/<doc_name>')
 def doc(doc_name):
-    return render_template(f"docs/{doc_name}.html")
+    file_path = f"./templates/docs/{doc_name}.html"
+    with open(file_path, "r") as f:
+        lines = f.readlines()
+        html = "".join(lines)
+        h_tags = re.findall("<h\d>.*?</h\d>", html)
+        toc_dict = {}
+        for h in h_tags:
+            level = h[2]
+            name = re.search("name=\"(.*?)\"", h).group(1)
+            toc_dict[name] = level
+    return render_template(f"docs/{doc_name}.html", **locals())
 
 
 if __name__ == '__main__':
