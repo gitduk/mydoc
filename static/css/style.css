@@ -13052,8 +13052,8 @@ pre.terminal .yellow {
 }
 
 .f4-mktg-fluid {
-    font-size: 1rem !important
-    padding: 20px
+    font-size: 1rem !important;
+    padding: 20px;
 }
 
 .f5-mktg-fluid {
@@ -18910,3 +18910,4 @@ a.text-purple-mktg:hover {
     box-sizing: border-box;
     border: 3px solid yellow;
 }
+
