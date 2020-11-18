@@ -4,9 +4,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="content-language" content="en-gb">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/markdown.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/doc-panda.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fonts.css') }}">
     <link rel="icon" type="image/x-icon" href="../static/icon/favicon.ico">
     <!-- Begin Jekyll SEO tag v2.6.1 -->
@@ -79,189 +78,13 @@
 
 
                 {% block TOC %}
-                    <h5 class="mt-3 text-mono">
-                        <a href="documents/gh_alias" class="main-page">alias</a>
+
+                    <!-- <h5 class="mt-3 text-mono">
+                        <a href="documents/gh_repo" class="main-page"></a>
                     </h5>
-
-
-                    <a href="documents/gh_alias_delete" class="text-mono d-block">delete</a>
-
-
-                    <a href="documents/gh_alias_list" class="text-mono d-block">list</a>
-
-
-                    <a href="documents/gh_alias_set" class="text-mono d-block">set</a>
-
-
-                    <h5 class="mt-3 text-mono">
-                        <a href="documents/gh_api" class="main-page">api</a>
-                    </h5>
-
-
-                    <h5 class="mt-3 text-mono">
-                        <a href="documents/gh_auth" class="main-page">auth</a>
-                    </h5>
-
-
-                    <a href="documents/gh_auth_login" class="text-mono d-block">login</a>
-
-
-                    <a href="documents/gh_auth_logout" class="text-mono d-block">logout</a>
-
-
-                    <a href="documents/gh_auth_refresh" class="text-mono d-block">refresh</a>
-
-
-                    <a href="documents/gh_auth_status" class="text-mono d-block">status</a>
-
-
-                    <h5 class="mt-3 text-mono">
-                        <a href="documents/gh_completion" class="main-page">completion</a>
-                    </h5>
-
-
-                    <h5 class="mt-3 text-mono">
-                        <a href="documents/gh_config" class="main-page">config</a>
-                    </h5>
-
-
-                    <a href="documents/gh_config_get" class="text-mono d-block">get</a>
-
-
-                    <a href="documents/gh_config_set" class="text-mono d-block">set</a>
-
-
-                    <h5 class="mt-3 text-mono">
-                        <a href="documents/gh_gist" class="main-page">gist</a>
-                    </h5>
-
-
-                    <a href="documents/gh_gist_create" class="text-mono d-block">create</a>
-
-
-                    <a href="documents/gh_gist_edit" class="text-mono d-block">edit</a>
-
-
-                    <a href="documents/gh_gist_list" class="text-mono d-block">list</a>
-
-
-                    <a href="documents/gh_gist_view" class="text-mono d-block">view</a>
-
-
-                    <h5 class="mt-3 text-mono">
-                        <a href="documents/gh_help" class="main-page">help</a>
-                    </h5>
-
-
-                    <a href="documents/gh_help_environment" class="text-mono d-block">environment</a>
-
-
-                    <h5 class="mt-3 text-mono">
-                        <a href="documents/gh_issue" class="main-page">issue</a>
-                    </h5>
-
-
-                    <a href="documents/gh_issue_close" class="text-mono d-block">close</a>
-
-
-                    <a href="documents/gh_issue_create" class="text-mono d-block">create</a>
-
-
-                    <a href="documents/gh_issue_list" class="text-mono d-block">list</a>
-
-
-                    <a href="documents/gh_issue_reopen" class="text-mono d-block">reopen</a>
-
-
-                    <a href="documents/gh_issue_status" class="text-mono d-block">status</a>
-
-
-                    <a href="documents/gh_issue_view" class="text-mono d-block">view</a>
-
-
-                    <h5 class="mt-3 text-mono">
-                        <a href="documents/gh_pr" class="main-page">pr</a>
-                    </h5>
-
-
-                    <a href="documents/gh_pr_checkout" class="text-mono d-block">checkout</a>
-
-
-                    <a href="documents/gh_pr_checks" class="text-mono d-block">checks</a>
-
-
-                    <a href="documents/gh_pr_close" class="text-mono d-block">close</a>
-
-
-                    <a href="documents/gh_pr_create" class="text-mono d-block">create</a>
-
-
-                    <a href="documents/gh_pr_diff" class="text-mono d-block">diff</a>
-
-
-                    <a href="documents/gh_pr_list" class="text-mono d-block">list</a>
-
-
-                    <a href="documents/gh_pr_merge" class="text-mono d-block">merge</a>
-
-
-                    <a href="documents/gh_pr_ready" class="text-mono d-block">ready</a>
-
-
-                    <a href="documents/gh_pr_reopen" class="text-mono d-block">reopen</a>
-
-
-                    <a href="documents/gh_pr_review" class="text-mono d-block">review</a>
-
-
-                    <a href="documents/gh_pr_status" class="text-mono d-block">status</a>
-
-
-                    <a href="documents/gh_pr_view" class="text-mono d-block">view</a>
-
-
-                    <h5 class="mt-3 text-mono">
-                        <a href="documents/gh_release" class="main-page">release</a>
-                    </h5>
-
-
-                    <a href="documents/gh_release_create" class="text-mono d-block">create</a>
-
-
-                    <a href="documents/gh_release_delete" class="text-mono d-block">delete</a>
-
-
-                    <a href="documents/gh_release_download" class="text-mono d-block">download</a>
-
-
-                    <a href="documents/gh_release_list" class="text-mono d-block">list</a>
-
-
-                    <a href="documents/gh_release_upload" class="text-mono d-block">upload</a>
-
-
-                    <a href="documents/gh_release_view" class="text-mono d-block">view</a>
-
-
-                    <h5 class="mt-3 text-mono">
-                        <a href="documents/gh_repo" class="main-page">repo</a>
-                    </h5>
-
-
-                    <a href="documents/gh_repo_clone" class="text-mono d-block">clone</a>
-
-
-                    <a href="documents/gh_repo_create" class="text-mono d-block">create</a>
-
-
-                    <a href="documents/gh_repo_fork" class="text-mono d-block">fork</a>
-
-
-                    <a href="documents/gh_repo_view" class="text-mono d-block">view</a>
-
-
-                    </nav>
+                    <a href="documents/gh_repo_clone" class="text-mono d-block"></a> -->
                 {% endblock %}
+            </nav>
         </div>
 
     </div>

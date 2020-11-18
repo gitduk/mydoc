@@ -24,13 +24,14 @@ def index():
 
         doc_list.append(doc_name.replace(".html", ""))
 
-        toc = "{% for name, level in toc_dict.items() %}\n<a href='#{{ name }}'>{{ name }}</a>\n{% endfor %}\n"
+        toc = "{% for name, level in toc_dict.items() %}\n<a href='#{{ name }}' style='white-space:pre'>{{ 2*(level-1)*' '+'- '+name }}</a>\n{% endfor %}\n"
         with open("templates/docs/" + doc_name, "w") as f:
             block_dict = {
                 "show_doc": doc,
                 "TOC": toc
             }
             html = build_child_html(extends='index.html', block_dict=block_dict)
+            html = html.replace('md-header-anchor"', 'md-header-anchor" style="position: relative;top: -80px;"')
             f.write(html)
 
     return render_template("index.html", **locals())
@@ -47,7 +48,7 @@ def doc(doc_name):
         for h in h_tags:
             level = h[2]
             name = re.search("name=\"(.*?)\"", h).group(1)
-            toc_dict[name] = level
+            toc_dict[name] = int(level)
     return render_template(f"docs/{doc_name}.html", **locals())
 
 
