@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block show_doc %}
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>SMB</title>
+</head>
+<body class='typora-export'>
+<div id='write'  class=''><h2><a name="smb" class="md-header-anchor" style="position: relative;top: -80px;"></a><span>SMB</span></h2><h4><a name="smb-协议" class="md-header-anchor" style="position: relative;top: -80px;"></a><span>SMB 协议</span></h4><blockquote><p><span>		</span><span>SMB协议可以实现相邻网络中间的计算机中文件的共享功能，该协议包含两部分分别是服务器端和客户端，它通过网络中的TCP、NetBEUI等通信协议建立会话连接，然后用户可以通过该协议的客户端发起文件共享请求，并通过服务器接收到的请求将文件发送给用户来实现文件的共享。</span></p><p><a href='https://baike.baidu.com/item/SMB#3' target='_blank' class='url'>https://baike.baidu.com/item/SMB#3</a></p></blockquote></div>
+</body>
+</html>
+{% endblock %}
+
+{% block TOC %}
+{% for name, level in toc_dict.items() %}
+<a href='#{{ name }}' style='white-space:pre'>{{ 2*(level-1)*' '+'- '+name }}</a>
+{% endfor %}
+
+{% endblock %}
