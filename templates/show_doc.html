@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 {% block TOC %}
     {% for name, level in toc_dict.items() %}
-        <a href='#{{ name }}' style='white-space:pre'>{{ 2*(level-1)*' '+'- '+name }}</a>
+        <a href='#{{ name }}' style='white-space:pre'>{{ 2*level*' '+'- '+name }}</a>
     {% endfor %}
 
 {% endblock %}
