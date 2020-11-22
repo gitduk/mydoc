@@ -390,7 +390,8 @@ thead {
     overflow: auto;
     break-inside: auto;
     text-align: left;
-    font-size: small;
+    font-size: 16px;
+    margin: 20px 0px;
 }
 
 table.md-table td {
@@ -5037,16 +5038,17 @@ kbd {
 }
 
 .markdown-body p, .markdown-body blockquote, .markdown-body ul, .markdown-body ol, .markdown-body dl, .markdown-body table, .markdown-body pre, .markdown-body details {
-    margin-top: 0;
+    /*margin-top: 0;*/
     /*margin-bottom: 16px*/
 }
 
 .markdown-body hr {
-    height: .25em;
+    height: .15em;
     padding: 0;
     margin: 24px 0;
     background-color: #e1e4e8;
-    border: 0
+    border: 0;
+    width: inherit;
 }
 
 .markdown-body blockquote {
@@ -5307,13 +5309,14 @@ kbd {
 }
 
 .markdown-body pre {
-    word-wrap: normal
+    word-wrap: normal;
+    padding: 10px;
 }
 
 .markdown-body pre > code {
     padding: 0;
     margin: 0;
-    font-size: 100%;
+    font-size: 15px;
     word-break: normal;
     white-space: pre;
     background: transparent;

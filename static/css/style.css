@@ -316,8 +316,6 @@ tt, code {
 }
 
 pre {
-    margin-top: 0;
-    margin-bottom: 0;
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 12px
 }

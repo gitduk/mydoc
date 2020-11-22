@@ -1,8 +1,10 @@
 import os
 import mistune
 from mistune import escape
-
-from utils.process_html import save_html_to_dir
+from mistune.plugins import plugin_table, plugin_strikethrough, plugin_footnotes
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import html
 
 
 class PandaRenderer(mistune.HTMLRenderer):
@@ -23,25 +25,34 @@ class PandaRenderer(mistune.HTMLRenderer):
         element = f'<h{level}><a name="{text}" class="md-header-anchor" style="position: relative;top: -40px;"></a><span>{text}</span></h{level}>'
         return element
 
+    def block_code(self, code, info=None):
+        if not info:
+            return f'\n<pre><code>{mistune.escape(code)}</code></pre>\n'
+
+        lexer = get_lexer_by_name(info, stripall=True)
+        formatter = html.HtmlFormatter()
+        return highlight(code, lexer, formatter)
+
 
 def markdown_to_html(file_path):
     file = open(file_path, "r")
     content = "".join(file.readlines())
 
     # use customized renderer
-    markdown = mistune.create_markdown(renderer=PandaRenderer())
-    html = markdown(content)
+    plugins = [plugin_table, plugin_strikethrough, plugin_footnotes]
+    markdown = mistune.create_markdown(renderer=PandaRenderer(), plugins=plugins)
+    doc = markdown(content)
 
     file.close()
-    return html
+    return doc
 
 
 def build_child_html(extends, block_dict):
-    html = "{% " + f"extends '{extends}'" + " %}"
+    child_html = "{% " + f"extends '{extends}'" + " %}"
     for key, value in block_dict.items():
-        html = html + "\n" + "{% " + f"block {key}" + " %}" + "\n" + value + "\n{% endblock %}" + "\n"
+        child_html = child_html + "\n" + "{% " + f"block {key}" + " %}" + "\n" + value + "\n{% endblock %}" + "\n"
 
-    return html
+    return child_html
 
 
 def parse_markdown_from_dir(file_dir):
@@ -54,8 +65,8 @@ def parse_markdown_from_dir(file_dir):
         file_path = f"{file_dir}/{name}"
 
         # translate markdown to html
-        html = markdown_to_html(file_path)
+        doc = markdown_to_html(file_path)
 
-        doc_dict[name.replace(".md", "")] = html
+        doc_dict[name.replace(".md", "")] = doc
 
     return doc_dict
