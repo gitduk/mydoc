@@ -7,7 +7,7 @@ def extract_toc_from_html(html):
     for h in h_tags:
         level = h[2]
         # name = re.search("name=\"(.*?)\"", h).group(1)
-        name = re.search("name=\"(.*?)\"", h).group(1)
+        name = re.search("name=\"(.*?)\"", h).group(1).replace("<code>", "").replace("</code>", "")
         toc_dict[name] = int(level)
 
     return toc_dict
