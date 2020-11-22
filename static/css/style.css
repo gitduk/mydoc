@@ -189,10 +189,6 @@ textarea {
     font: inherit
 }
 
-* {
-    box-sizing: border-box
-}
-
 input, select, textarea, button {
     font-family: inherit;
     font-size: inherit;
@@ -1724,10 +1720,6 @@ p.explain .minibutton {
     width: 91.6666666667%
 }
 
-.col-12 {
-    width: 100%
-}
-
 @media (min-width: 544px) {
     .col-sm-1 {
         width: 8.3333333333%
@@ -1863,10 +1855,6 @@ p.explain .minibutton {
 
     .col-lg-9 {
         width: 75%
-    }
-
-    .col-lg-10 {
-        width: 83.3333333333%
     }
 
     .col-lg-11 {
@@ -5133,10 +5121,6 @@ p.explain .minibutton {
 
 .m-3 {
     margin: 16px !important
-}
-
-.mt-3 {
-    margin-top: 16px !important
 }
 
 .mr-3 {
@@ -11622,7 +11606,7 @@ p.explain .minibutton {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 16px;
     line-height: 1.5;
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
 .markdown-body::before {
@@ -11634,10 +11618,6 @@ p.explain .minibutton {
     display: table;
     clear: both;
     content: ""
-}
-
-.markdown-body > *:first-child {
-    margin-top: 0 !important
 }
 
 .markdown-body > *:last-child {
@@ -11802,28 +11782,8 @@ p.explain .minibutton {
     margin-bottom: 16px
 }
 
-.markdown-body table {
-    display: block;
-    width: 100%;
-    overflow: auto
-}
-
 .markdown-body table th {
     font-weight: 600
-}
-
-.markdown-body table th, .markdown-body table td {
-    padding: 6px 13px;
-    border: 1px solid #dfe2e5
-}
-
-.markdown-body table tr {
-    background-color: #fff;
-    border-top: 1px solid #c6cbd1
-}
-
-.markdown-body table tr:nth-child(2n) {
-    background-color: #f6f8fa
 }
 
 .markdown-body table img {

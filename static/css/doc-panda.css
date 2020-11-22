@@ -1,4 +1,9 @@
 :root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --select-text-bg-color: #B5D6FC;
+    --select-text-font-color: auto;
+    --monospace: "Lucida Console", Consolas, "Courier", monospace;
     /* dark color for background*/
     /* default color */
     /* --bg-color1: #292A2B; */
@@ -147,14 +152,6 @@ html {
     -webkit-font-smoothing: antialiased;
 }
 
-:root {
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --select-text-bg-color: #B5D6FC;
-    --select-text-font-color: auto;
-    --monospace: "Lucida Console", Consolas, "Courier", monospace;
-}
-
 body {
     margin: 0px;
     padding: 0px;
@@ -187,12 +184,6 @@ a:active, a:hover {
     outline: 0px;
 }
 
-.in-text-selection, ::selection {
-    text-shadow: none;
-    background: var(--select-text-bg-color);
-    color: var(--select-text-font-color);
-}
-
 #write {
     margin: 0px auto;
     height: auto;
@@ -207,8 +198,7 @@ a:active, a:hover {
     opacity: 1;
     transition: 0.3s;
     max-width: 80%;
-    padding-left: 70px;
-    /*padding-right: 70px;*/
+    margin-top: 50px
 }
 
 #write.first-line-indent p {
@@ -280,9 +270,9 @@ input[type="checkbox"], input[type="radio"] {
     padding: 0px;
 }
 
-*, ::after, ::before {
-    box-sizing: border-box;
-}
+/**, ::after, ::before {*/
+/*    box-sizing: border-box;*/
+/*}*/
 
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
     width: inherit;
@@ -331,7 +321,7 @@ h6 {
 }
 
 .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
-    margin-top: 1rem;
+    /*margin-top: 1rem;*/
     margin-bottom: 1rem;
 }
 
@@ -389,13 +379,14 @@ thead {
     display: table-header-group;
 }
 
-table {
+.markdown-body table {
     border-collapse: collapse;
     border-spacing: 0px;
-    width: 100%;
+    width: auto;
     overflow: auto;
     break-inside: auto;
     text-align: left;
+    font-size: small;
 }
 
 table.md-table td {
@@ -1198,7 +1189,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
     border-width: 0px;
     background: 0px 0px;
     font-family: inherit;
-    font-size: inherit;
+    /*font-size: inherit;*/
     margin: 0px;
     white-space: pre;
     overflow-wrap: normal;
@@ -1262,9 +1253,9 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
     width: 0px;
 }
 
-.CodeMirror div.CodeMirror-cursor {
-    visibility: hidden;
-}
+/*.CodeMirror div.CodeMirror-cursor {*/
+/*    visibility: hidden;*/
+/*}*/
 
 .CodeMirror-focused div.CodeMirror-cursor {
     visibility: inherit;
@@ -1280,117 +1271,116 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
     }
 }
 
+/*:root {*/
+/*    !* dark color for background*!*/
+/*    !* default color *!*/
+/*    !* --bg-color1: #292A2B; *!*/
+/*    --bg-color1: #24292e;*/
+/*    !* for most panel, context, header, etc *!*/
+/*    --bg-color2: #292A2B;*/
+/*    !* for toc and table edit panel *!*/
+/*    --bg-color3: #222324;*/
+/*    !* for tips *!*/
+/*    --bg-color4: #212020;*/
 
-:root {
-    /* dark color for background*/
-    /* default color */
-    /* --bg-color1: #292A2B; */
-    --bg-color1: #24292e;
-    /* for most panel, context, header, etc */
-    --bg-color2: #292A2B;
-    /* for toc and table edit panel */
-    --bg-color3: #222324;
-    /* for tips */
-    --bg-color4: #212020;
+/*    !* for blockquote, codeblock, input, etc *!*/
 
-    /* for blockquote, codeblock, input, etc */
+/*    !* --bg-color5: #303233; *!*/
+/*    --bg-color5: #0E1113;*/
 
-    /* --bg-color5: #303233; */
-    --bg-color5: #0E1113;
+/*    !* light color for text and icon*!*/
+/*    !* default color *!*/
+/*    --text-color1: #E6E6E6;*/
+/*    !* for text on panel *!*/
+/*    --text-color2: #E6E6E6;*/
+/*    !* for checkbox and radio *!*/
+/*    --text-color3: #757575;*/
+/*    !* for tips *!*/
+/*    --text-color4: #E6E6E6;*/
+/*    !* for focus mode *!*/
+/*    --text-color5: rgba(170, 178, 180, 0.5);*/
+/*    !* link color *!*/
+/*    --link-color: #6FC1FF;*/
+/*    !* table color *!*/
+/*    --table-border-color: #555;*/
+/*    --table-thead-color: #2b2d2e;*/
+/*    --table-bg-color: #303233;*/
+/*    --table-bg-darker-color: #303233;*/
+/*    !* hover color *!*/
+/*    !* default hover background color *!*/
+/*    --hover-bg-color1: rgb(62, 66, 73);*/
+/*    !* for input item *!*/
+/*    --hover-bg-color2: hsl(220, 9%, 14%);*/
+/*    !* for button on toc and table edit panel *!*/
+/*    --hover-bg-color3: rgba(62, 66, 73, 0.8);*/
+/*    !* default hover text color *!*/
+/*    --hover-text-color: white;*/
+/*    !* active color *!*/
+/*    --active-color: #6FC1FF;*/
+/*    !* input color *!*/
+/*    --input-color: #222324;*/
+/*    !* menu divider color *!*/
+/*    !*   --menu-divider-color: rgb(95, 97, 101); *!*/
+/*    --menu-divider-color: #292A2B;*/
+/*    --graph-divider-color: #E6E6E6;*/
+/*    !* scrollbar color *!*/
+/*    --scrollbar-thumb-color: #6FC1FF;*/
+/*    --scrollbar-track-color: rgba(95, 97, 101, 0.3);*/
+/*    !* theme select color *!*/
+/*    --theme-select-color: rgba(255, 255, 255, 0.5);*/
+/*    --button-color: rgb(62, 66, 73);*/
+/*    --select-color: rgb(33, 37, 43);*/
+/*    !* focus color *!*/
+/*    --focus-color: rgba(100, 100, 100, 0.8);*/
+/*    --focus-ring-color: var(--focus-color);*/
+/*    !* codeblock color *!*/
+/*    --code-red-color: #FF75B5;*/
+/*    --code-yellow-color: #FFB86C;*/
+/*    --code-cyan-color: #19f9d8;*/
+/*    --code-blue-color: #6FC1FF;*/
+/*    --code-purple-color: #FF75B5;*/
+/*    --code-orange-color: #FFB86C;*/
+/*    --code-green-color: #19f9d8;*/
+/*    --code-grey-color: hsl(220, 9%, 55%);*/
 
-    /* light color for text and icon*/
-    /* default color */
-    --text-color1: #E6E6E6;
-    /* for text on panel */
-    --text-color2: #E6E6E6;
-    /* for checkbox and radio */
-    --text-color3: #757575;
-    /* for tips */
-    --text-color4: #E6E6E6;
-    /* for focus mode */
-    --text-color5: rgba(170, 178, 180, 0.5);
-    /* link color */
-    --link-color: #6FC1FF;
-    /* table color */
-    --table-border-color: #555;
-    --table-thead-color: #2b2d2e;
-    --table-bg-color: #303233;
-    --table-bg-darker-color: #303233;
-    /* hover color */
-    /* default hover background color */
-    --hover-bg-color1: rgb(62, 66, 73);
-    /* for input item */
-    --hover-bg-color2: hsl(220, 9%, 14%);
-    /* for button on toc and table edit panel */
-    --hover-bg-color3: rgba(62, 66, 73, 0.8);
-    /* default hover text color */
-    --hover-text-color: white;
-    /* active color */
-    --active-color: #6FC1FF;
-    /* input color */
-    --input-color: #222324;
-    /* menu divider color */
-    /*   --menu-divider-color: rgb(95, 97, 101); */
-    --menu-divider-color: #292A2B;
-    --graph-divider-color: #E6E6E6;
-    /* scrollbar color */
-    --scrollbar-thumb-color: #6FC1FF;
-    --scrollbar-track-color: rgba(95, 97, 101, 0.3);
-    /* theme select color */
-    --theme-select-color: rgba(255, 255, 255, 0.5);
-    --button-color: rgb(62, 66, 73);
-    --select-color: rgb(33, 37, 43);
-    /* focus color */
-    --focus-color: rgba(100, 100, 100, 0.8);
-    --focus-ring-color: var(--focus-color);
-    /* codeblock color */
-    --code-red-color: #FF75B5;
-    --code-yellow-color: #FFB86C;
-    --code-cyan-color: #19f9d8;
-    --code-blue-color: #6FC1FF;
-    --code-purple-color: #FF75B5;
-    --code-orange-color: #FFB86C;
-    --code-green-color: #19f9d8;
-    --code-grey-color: hsl(220, 9%, 55%);
+/*    --code-select-bg-color: rgb(64, 72, 89);*/
+/*    --code-cursor-color: hsl(220, 100%, 66%);*/
+/*    !* implicit selecttion text bg color *!*/
+/*    --select-text-bg-color: rgb(150, 156, 170);*/
+/*    !* implicit button color *!*/
+/*    --primary-color: var(--button-color);*/
+/*    --primary-btn-border-color: transparent;*/
+/*    --primary-btn-text-color: var(--text-color2);*/
+/*    !* implicit sidebar color *!*/
+/*    --side-bar-bg-color: var(--bg-color2);*/
+/*    --control-text-color: var(--text-color2);*/
+/*    !* implicit text color *!*/
+/*    --text-color: var(--text-color1);*/
+/*    !* implicit background color for setting menu *!*/
+/*    --bg-color: var(--bg-color1);*/
+/*    !* implicit hover color *!*/
+/*    --item-hover-bg-color: var(--hover-bg-color1);*/
+/*    --item-hover-text-color: var(--hover-text-color);*/
+/*    !* implicit active color *!*/
+/*    --active-file-bg-color: var(--hover-bg-color);*/
+/*    !* implicit mathjax edit panel background color *!*/
+/*    --rawblock-edit-panel-bd: var(--bg-color5);*/
+/*    !* implicit focus mode color *!*/
+/*    --blur-text-color: var(--text-color5);*/
+/*    !* implicit search result select color *!*/
+/*    --search-select-bg-color: var(--select-text-bg-color);*/
+/*    --search-select-bg-color: rgb(56, 71, 95);*/
 
-    --code-select-bg-color: rgb(64, 72, 89);
-    --code-cursor-color: hsl(220, 100%, 66%);
-    /* implicit selecttion text bg color */
-    --select-text-bg-color: rgb(150, 156, 170);
-    /* implicit button color */
-    --primary-color: var(--button-color);
-    --primary-btn-border-color: transparent;
-    --primary-btn-text-color: var(--text-color2);
-    /* implicit sidebar color */
-    --side-bar-bg-color: var(--bg-color2);
-    --control-text-color: var(--text-color2);
-    /* implicit text color */
-    --text-color: var(--text-color1);
-    /* implicit background color for setting menu */
-    --bg-color: var(--bg-color1);
-    /* implicit hover color */
-    --item-hover-bg-color: var(--hover-bg-color1);
-    --item-hover-text-color: var(--hover-text-color);
-    /* implicit active color */
-    --active-file-bg-color: var(--hover-bg-color);
-    /* implicit mathjax edit panel background color */
-    --rawblock-edit-panel-bd: var(--bg-color5);
-    /* implicit focus mode color */
-    --blur-text-color: var(--text-color5);
-    /* implicit search result select color */
-    --search-select-bg-color: var(--select-text-bg-color);
-    --search-select-bg-color: rgb(56, 71, 95);
+/*    --control-text-hover-color: var(--hover-text-color);*/
+/*    !* implicit active file color in sidebar file menu treeview *!*/
+/*    --active-file-text-color: var(--hover-text-color);*/
+/*    --active-file-border-color: #6FC1FF;*/
 
-    --control-text-hover-color: var(--hover-text-color);
-    /* implicit active file color in sidebar file menu treeview */
-    --active-file-text-color: var(--hover-text-color);
-    --active-file-border-color: #6FC1FF;
+/*    --node-border: var(--menu-divider-color);*/
+/*    --node-fill: var(--bg-color5);*/
 
-    --node-border: var(--menu-divider-color);
-    --node-fill: var(--bg-color5);
-
-    --window-border: none;
-}
+/*    --window-border: none;*/
+/*}*/
 
 /* font */
 /* basic style */
@@ -1401,6 +1391,12 @@ html {
 /* text selection background color */
 .in-text-selection {
     background-color: rgb(64, 72, 89);
+}
+
+.in-text-selection, ::selection {
+    text-shadow: none;
+    background: var(--select-text-bg-color);
+    color: var(--select-text-font-color);
 }
 
 /* link */
@@ -1668,6 +1664,7 @@ input {
 /* input:hover {
     background-color: var(--hover-bg-color2) !important;
 } */
+
 
 /* radio */
 input[type="radio"]:before {
@@ -2215,7 +2212,7 @@ footer.ty-footer {
 
 /* scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
     padding-right: 10px;
     background-color: rgba(0, 0, 0, 0);
 }
@@ -3374,10 +3371,6 @@ table tbody tr:nth-child(2n) {
     background-color: var(--table-bg-darker-color);
 }
 
-table tbody tr:nth-child(2n + 1) {
-    background-color: var(--table-bg-color);
-}
-
 table tr td {
     border-left: 2px solid var(--table-border-color);
     border-right: 2px solid var(--table-border-color);
@@ -3479,13 +3472,13 @@ sup.md-footnote {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* mathjax */
-/* .mathjax-block>.code-tooltip {
-    bottom: .375rem;
-}
 .md-mathjax-midline {
     background: #fafafa;
-} */
+}
+
+*
+
+/
 .md-inline-math script {
     color: var(--text-color1);
 }
@@ -3526,11 +3519,6 @@ input {
     border: 0px !important;
     box-shadow: none;
 }
-
-/* input hover */
-/* input:hover {
-    background-color: var(--hover-bg-color2) !important;
-} */
 
 /* radio */
 input[type="radio"]:before {
@@ -3573,9 +3561,9 @@ input[type="radio"]:checked:before {
 }
 
 /* default focus style */
-:focus {
-    outline-color: var(--focus-color);
-}
+/*:focus {*/
+/*    outline-color: var(--focus-color);*/
+/*}*/
 
 /* exit source view button */
 .typora-sourceview-on #toggle-sourceview-btn {
@@ -4076,25 +4064,18 @@ footer.ty-footer {
     color: var(--text-color2) !important;
 }
 
-/* scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-    padding-right: 10px;
-    background-color: rgba(0, 0, 0, 0);
-}
+/*!* scrollbar track *!*/
+/*::-webkit-scrollbar-track:hover {*/
+/*    background-color: var(--scrollbar-track-color) !important;*/
+/*    border-radius: 4px;*/
+/*}*/
 
-/* scrollbar track */
-::-webkit-scrollbar-track:hover {
-    background-color: var(--scrollbar-track-color) !important;
-    border-radius: 4px;
-}
-
-/* scrollbar thumb */
-::-webkit-scrollbar-thumb,
-::-webkit-scrollbar-thumb:active {
-    background-color: var(--scrollbar-thumb-color) !important;
-    border-radius: 4px;
-}
+/*!* scrollbar thumb *!*/
+/*::-webkit-scrollbar-thumb,*/
+/*::-webkit-scrollbar-thumb:active {*/
+/*    background-color: var(--scrollbar-thumb-color) !important;*/
+/*    border-radius: 4px;*/
+/*}*/
 
 /* tip when hover on a button */
 #ty-tooltip {
@@ -4427,16 +4408,14 @@ pre.md-meta-block:active {
     opacity: 0;
 }
 
-/* #md-searchpanel {
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.3s !important;
-}
-
 .on-search-panel-open #md-searchpanel {
     visibility: visible;
     opacity: 1;
-} */
+}
+
+*
+
+/
 
 .uni-preference-panel {
     display: block;

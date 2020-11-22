@@ -1,55 +1,36 @@
-import os
 import re
-from flask import Flask, render_template
-from utils.bulid_doc import build_child_html
+from flask import Flask, render_template, render_template_string
+from utils.bulid_doc import parse_markdown_from_dir
+from utils.process_html import extract_toc_from_html
+from utils.db import save_html_to_sqlite, get_doc_from_sqlite
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    doc_file_name_list = os.listdir(r"./templates/documents")
-    doc_list = [file_name.replace('.html', '') for file_name in doc_file_name_list]
+    # get doc name dict
+    doc_dict = parse_markdown_from_dir("./markdown")
 
-    doc_file_name_list = os.listdir(r"./templates/documents")
-    html_doc_list = [file_name for file_name in doc_file_name_list]
-    doc_list = []
-    root = "templates/documents/"
-    for doc_name in html_doc_list:
-        with open(root + doc_name, "r") as f:
-            lines = f.readlines()
-            text = "".join(lines)
-            drop = re.search("<style .*</style>", text, re.S).group()
-            doc = text.replace(drop, "")
+    # get doc name list
+    doc_list = [key for key in doc_dict]
 
-        doc_list.append(doc_name.replace(".html", ""))
-
-        toc = "{% for name, level in toc_dict.items() %}\n<a href='#{{ name }}' style='white-space:pre'>{{ 2*(level-1)*' '+'- '+name }}</a>\n{% endfor %}\n"
-        with open("templates/docs/" + doc_name, "w") as f:
-            block_dict = {
-                "show_doc": doc,
-                "TOC": toc
-            }
-            html = build_child_html(extends='index.html', block_dict=block_dict)
-            html = html.replace('md-header-anchor"', 'md-header-anchor" style="position: relative;top: -80px;"')
-            f.write(html)
+    # save to sqlite
+    save_html_to_sqlite(doc_dict)
 
     return render_template("index.html", **locals())
 
 
 @app.route('/documents/<doc_name>')
-def doc(doc_name):
-    file_path = f"./templates/docs/{doc_name}.html"
-    with open(file_path, "r") as f:
-        lines = f.readlines()
-        html = "".join(lines)
-        h_tags = re.findall("<h\d>.*?</h\d>", html)
-        toc_dict = {}
-        for h in h_tags:
-            level = h[2]
-            name = re.search("name=\"(.*?)\"", h).group(1)
-            toc_dict[name] = int(level)
-    return render_template(f"docs/{doc_name}.html", **locals())
+def show_doc(doc_name):
+    doc = get_doc_from_sqlite(doc_name)
+    toc_dict = extract_toc_from_html(doc)
+    with open(f"templates/show_doc.html", "r") as f:
+        text = "".join(f.readlines())
+        need_replace = re.search("<div id='write' class=''>(\n.*)</div>", text, re.S).group(1)
+        html = text.replace(need_replace, doc)
+
+    return render_template_string(html, **locals())
 
 
 if __name__ == '__main__':
