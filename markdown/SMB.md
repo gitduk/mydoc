@@ -20,6 +20,3 @@
 
 https://baike.baidu.com/item/SMB#3
 
-### TEST
-
-this is test string
