@@ -1806,7 +1806,17 @@ p.explain .minibutton {
     }
 
     .col-lg-2 {
-        width: 15%
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        padding-bottom: 2em;
+        width: 300px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        min-height: 100%;
+        z-index: 200;
+        background-color: #1b1f23;
     }
 
     .col-lg-3 {
@@ -11977,10 +11987,6 @@ p.explain .minibutton {
     color: rgba(255, 255, 255, 0.7) !important
 }
 
-.bg-black {
-    background-color: #1b1f23
-}
-
 .mask {
     position: absolute;
     height: 170px;
@@ -12589,7 +12595,7 @@ pre.terminal .yellow {
 
 .f4-mktg-fluid {
     font-size: 1rem !important;
-    padding: 20px;
+    padding: 17px;
 }
 
 .f5-mktg-fluid {
