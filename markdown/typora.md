@@ -1,16 +1,3 @@
-# 一级标题
-
-## 二级标题
-
-### 三级标题
-
-#### 四级标题
-
-##### 五级标题
-
-###### 六级标题
-
-
 
 正文文本
 
@@ -79,9 +66,9 @@ $$
 
 插入图片：
 
-![显示的文字](https://www.cnblogs.com "图片标题")
+![显示的文字](https://desk-fd.zol-img.com.cn/t_s208x130c5/g6/M00/04/0D/ChMkKl-3jyuIYeYRAAuEPzwPt90AAFlsgFpcwAAC4RX412.jpg "图片标题")
 
-![显示的文字](C:\Users\Hider\Desktop\echart.png)
+![显示的文字](https://desk-fd.zol-img.com.cn/t_s208x130c5/g6/M00/03/03/ChMkKV-06d-IY4ccADeN3natw_YAAFfVQNgEl0AN432516.jpg)
 
 
 
@@ -112,8 +99,8 @@ s<sup>文本</sup>
 
 
 
-- [ ] 任务列表（已完成）
-- [ ] 。。。
+- [x] 任务列表（已完成）
+- [x] 。。。
 
 
 

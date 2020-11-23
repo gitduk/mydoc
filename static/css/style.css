@@ -11981,10 +11981,6 @@ p.explain .minibutton {
     background-color: #1b1f23
 }
 
-.bg-true-black {
-    background-color: #0E1113
-}
-
 .mask {
     position: absolute;
     height: 170px;
@@ -12435,26 +12431,6 @@ pre.terminal .magenta {
 
 pre.terminal .yellow {
     color: #b08800 !important
-}
-
-.markdown-body h2 {
-    font-size: 32px
-}
-
-.markdown-body h3 {
-    /*padding-top: 48px*/
-}
-
-.markdown-body pre {
-    background-color: #0E1113 !important
-}
-
-.markdown-body code {
-    background: #0E1113 !important
-}
-
-.markdown-body a {
-    color: #79b8ff !important
 }
 
 @font-face {
