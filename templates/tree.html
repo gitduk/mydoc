@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <title>原生JS实现自动生成文章标题树</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        body {
+            font: 16px/1.5;
+        }
+
+        ul li, ol li {
+            list-style: none;
+        }
+
+        .contextBox {
+            position: relative;
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        #article {
+            margin-left: 200px;
+            border: 1px #eee solid;
+            padding: 15px;
+        }
+
+        .articleMenu a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .articleMenu a:hover {
+            color: #f85455;
+        }
+
+        .articleMenu-box {
+            width: 170px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        .articleMenu {
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 2px #eee;
+        }
+
+        .titleH2, .titleH3 {
+            line-height: 1.5em;
+        }
+
+        .titleH2 {
+            font-weight: bold;
+        }
+
+        .titleH3 {
+            margin-left: 20px;
+        }
+
+        .articleMenu .articleMenu-close, .articleMenu-open {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 44px;
+            width: 44px;
+            cursor: pointer;
+        }
+
+        .articleMenu-open {
+            background: url("http://www.dengzhr.com/wp-content/themes/dengzhr/images/icon_articleMenu_open.png") no-repeat 50% 50%;
+            display: none;
+        }
+
+        .articleMenu .articleMenu-close {
+            background: url("http://www.dengzhr.com/wp-content/themes/dengzhr/images/icon_articleMenu_close.png") no-repeat 50% 50%;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="contextBox">
+    <div id="article">
+        <h2>二级标题</h2>
+        <h3>三级标题</h3>
+        <p>hello<br/> hello<br/> hello<br/> hello<br/> hello<br/> hello<br/><br/> hello<br/> hell<br/>o hel<br/>lo
+            hell<br/>o he<br/>llo hello</p>
+        <h3>三级标题</h3>
+        <h3>三级标题</h3>
+        <h3>三级标题</h3>
+        <h3>三级标题</h3>
+        <p>hello hello hello hello hello hello hello hello hello hello hello</p>
+        <h2>二级标题</h2>
+        <h3>三级标题</h3>
+        <h3>三级标题</h3>
+        <p>world w<br/>orld <br/>world world wo<br/>rld world wo<br/>rld world world wor<br/>ld world world <br/>world
+            <br/>worl<br/>d world<br/> w<br/>orld <br/>world wo<br/>rld wor<br/>ld world wor<br/>ld world worl<br/>d
+            w<br/>or<br/>ld<br/> <br/>world <br/>world <br/>world<br/> <br/>wo<br/>rld wo<br/>rld w<br/>orld w<br/>orld
+        </p>
+        <h3>三级标题</h3>
+        <h3>三级标题</h3>
+        <h2>二级标题</h2>
+        <h3>三级标题</h3>
+        <h3>三级标题</h3>
+        <h2>二级标题</h2>
+        <h3>三级标题</h3>
+        <h3>三级标题</h3>
+        <h2>二级标题</h2>
+        <h3>三级标题</h3>
+        <h3>三级标题</h3>
+    </div>
+    <div class="articleMenu-box" id="articleMenu_box">
+        <span class="articleMenu-open" id="articleMenu_open"></span>
+        <ul class="articleMenu hello" id="articleMenu">
+            <span class="articleMenu-close" id="articleMenu_close"></span>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var article = document.getElementById("article");
+    var articleHgroupMenu = document.getElementById("articleMenu");
+
+    // 关闭和展开文档树
+    var articleMenu_open = document.getElementById("articleMenu_open");
+    var articleMenu_close = document.getElementById("articleMenu_close");
+    articleMenu_close.onclick = function () {
+        articleHgroupMenu.style.display = "none";
+        articleMenu_open.style.display = "block";
+    };
+    articleMenu_open.onclick = function () {
+        articleHgroupMenu.style.display = "block";
+        articleMenu_open.style.display = "none";
+    };
+
+    //
+    titleHgroup(article, articleHgroupMenu, "titleH2", "titleH3");
+
+    // 获得obj下的直接子元素中为标题h2~h3的标题元素
+    // 参数说明：hgroupParent为包含h2和h3的直接父元素；MenuList为承载新建文章列表的ul元素；
+    // h2ClassName、h3ClassName分别为新建文章列表中对应h2、h3的li自列表的Class属性；
+    function titleHgroup(hgroupParent, MenuList, h2ClassName, h3ClassName) {
+        var hgroup = hgroupParent.children;
+
+        // 创建文档片段，来包裹自动生成的h2、h3对应生成的li列表
+        var fragment = document.createDocumentFragment();
+        for (i = 0; i < hgroup.length && hgroup[i].nodeType === 1; i++) {
+
+            // 为对应类型的标题生成li列表
+            // 参数说明：hType为标题的类型如h1~h6；className为标题对应的li列表的class属性值；
+            function titleToList(hType, className) {
+                var li = document.createElement("li");
+                li.className = className;
+
+                // 为li标签内部添加a标签，用锚点进行定位；
+                hgroup[i].id = hType + i;
+                li.innerHTML = ("<a href='#" + hType + i + "'>" + hgroup[i].innerHTML + "</a>");
+                fragment.appendChild(li);
+            }
+
+            // 当遍历中标题元素为h2时，调用titleToList(hType, className)新增对应的li列表；
+            if (hgroup[i].nodeName.toLowerCase() == "h2") {
+                titleToList("h2", h2ClassName);
+            }
+
+            // 当遍历中标题元素为h3时，调用titleToList(hType, className)新增对应的li列表；
+            if (hgroup[i].nodeName.toLowerCase() == "h3") {
+                titleToList("h3", h3ClassName);
+            }
+        }
+        // 将承载好对应li元素集合的文档片段fragment添加到DOM(即在DOM中包裹li列表的父元素)中去；
+        MenuList.appendChild(fragment);
+    }
+</script>
+</body>
+</html>
